@@ -19,7 +19,7 @@
     </head>
     <body>
         <jsp:include page="parts/header.jsp"/>
-        <div class="alert alert-warning" role="alert" id="alertaCadastro">
+        <div class="alert alert-warning" role="alert" id="alertaPerfil">
             <p></p>
         </div>
         
