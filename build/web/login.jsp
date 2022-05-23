@@ -19,24 +19,26 @@
     <body>
         <jsp:include page="parts/header.jsp"/>
         
-        <div class="alert alert-warning" role="alert" id="alertaLogin">
-            <p></p>
+        <% if (request.getAttribute("mensagem") != null) { %>
+        <div class="alert alert-warning" role="alert">
+            <p><%= request.getAttribute("mensagem") %></p>
         </div>
+        <% } %>        
         
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="#">
+                    <form action="LoginClienteServlet" method="post">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Login</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu login">
+                          <input type="text" name="login" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu login">
                           <small id="emailHelp" class="form-text text-muted">Nós nunca iremos compartilhar seus dados com outros.</small>
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1">Senha</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+                          <input type="password" name="senha" class="form-control" id="exampleInputPassword1" placeholder="Senha">
                         </div>
-                        <button type="button" class="btn btn-primary" id="btn-login" onclick="validar()">Entrar</button>
+                        <button type="submit" class="btn btn-primary" id="btn-login">Entrar</button>
                       </form>
                 </div>
             </div>

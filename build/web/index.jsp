@@ -18,6 +18,12 @@
     <body>
         <jsp:include page="parts/header.jsp"/>
         
+        <% if (request.getAttribute("mensagem") != null) { %>
+        <div class="alert alert-warning" role="alert">
+            <p><%= request.getAttribute("mensagem") %></p>
+        </div>
+        <% } %>  
+        
         <div class="container">
             <div class="row">
                 <div class="col-md-4">

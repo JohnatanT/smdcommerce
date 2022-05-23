@@ -26,28 +26,28 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="#">
+                    <form action="NovoClienteServlet" method="post">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Login</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu login">
+                          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu login" name="login">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1">Senha</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" name="senha">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nome</label>
-                          <input type="text" class="form-control" id="nome" aria-describedby="emailHelp" placeholder="Digite seu nome">
+                          <input type="text" class="form-control" id="nome" aria-describedby="emailHelp" placeholder="Digite seu nome" name="nome">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Email</label>
-                          <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Digite seu email">
+                          <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Digite seu email" name="email">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Endereço</label>
-                          <input type="text" class="form-control" id="endereco" aria-describedby="emailHelp" placeholder="Digite seu endereço">
+                          <input type="text" class="form-control" id="endereco" aria-describedby="emailHelp" placeholder="Digite seu endereço" name="endereco">
                         </div>
-                        <button type="button" class="btn btn-primary" id="btn-login" onclick="validar()">Entrar</button>
+                        <button type="submit" class="btn btn-primary" id="btn-login">Cadastrar</button>
                       </form>
                 </div>
             </div>

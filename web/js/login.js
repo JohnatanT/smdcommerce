@@ -21,5 +21,7 @@ function validar() {
         document.getElementById(alerta).style.display = "block";
     }
     
+    return validacao;
+    
 }
 
