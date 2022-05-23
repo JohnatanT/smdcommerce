@@ -4,6 +4,7 @@
     Author     : frcavalc
 --%>
 
+<%@page import="smdcommerce.usuario.modelo.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,34 +19,34 @@
         <script src="js/perfil.js"></script>
     </head>
     <body>
-        <jsp:include page="parts/header.jsp"/>
-        <div class="alert alert-warning" role="alert" id="alertaPerfil">
-            <p></p>
-        </div>
-        
+        <jsp:include page="../parts/header.jsp"/>
+        <%
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+        %>
+    
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <form action="#">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Login</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu login">
+                          <input type="text" class="form-control" value="<%= (usuario != null ? usuario.getLogin() : "") %>" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu login">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1">Senha</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+                          <input type="password" class="form-control" value="<%= (usuario != null ? usuario.getSenha() : "") %>" id="exampleInputPassword1" placeholder="Senha">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nome</label>
-                          <input type="text" class="form-control" id="nome" aria-describedby="emailHelp" placeholder="Digite seu nome">
+                          <input type="text" class="form-control" id="nome" value="<%= (usuario != null ? usuario.getNome() : "") %>" aria-describedby="emailHelp" placeholder="Digite seu nome">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Email</label>
-                          <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Digite seu email">
+                          <input type="text" class="form-control" value="<%= (usuario != null ? usuario.getEmail() : "") %>" id="email" aria-describedby="emailHelp" placeholder="Digite seu email">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Endereço</label>
-                          <input type="text" class="form-control" id="endereco" aria-describedby="emailHelp" placeholder="Digite seu endereço">
+                          <input type="text" class="form-control" value="<%= (usuario != null ? usuario.getEndereco() : "") %>" id="endereco" aria-describedby="emailHelp" placeholder="Digite seu endereço">
                         </div>
                         <button type="button" class="btn btn-primary" id="btn-login" onclick="atualizar()">Atualizar</button>
                         <button type="button" class="btn btn-danger">Excluir cadastro</button>

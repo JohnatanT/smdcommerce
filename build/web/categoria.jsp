@@ -19,10 +19,6 @@
     <body>
         <jsp:include page="parts/header.jsp"/>
         
-        <div class="alert alert-warning" role="alert" id="alertaCategoria">
-            <p></p>
-        </div>
-        
         <div class="container">
             <div class="row">
                 <h1>Inserir nova categoria</h1>

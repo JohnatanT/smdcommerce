@@ -14,7 +14,7 @@
     <a href="compras.jsp">
         <i class="bi bi-bag"></i>
     </a>
-    <a href="perfil.jsp">
+    <a href="PerfilServlet">
         <i class="bi bi-person-circle"></i>
     </a>
     <a href="LogoutServlet">
