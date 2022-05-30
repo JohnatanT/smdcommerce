@@ -17,7 +17,7 @@
         <link href="css/home.css" rel="stylesheet">
     </head>
     <body>
-        <jsp:include page="parts/header.jsp"/>
+        <jsp:include page="../parts/header.jsp"/>
         <h2>Compras Anteriores</h2>
       
         <table class="table">

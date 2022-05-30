@@ -2,7 +2,7 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>LoginClienteServlet</servlet-name>
-        <servlet-class>smdcommerce.usuario.controller.LoginClienteServlet</servlet-class>
+        <servlet-class>servlets.LoginClienteServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>NovoClienteServlet</servlet-name>
@@ -10,11 +10,27 @@
     </servlet>
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>smdcommerce.usuario.controller.LogoutServlet</servlet-class>
+        <servlet-class>servlets.LogoutServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PerfilServlet</servlet-name>
-        <servlet-class>smdcommerce.usuario.controller.PerfilServlet</servlet-class>
+        <servlet-class>servlets.PerfilServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CategoriaServlet</servlet-name>
+        <servlet-class>servlets.CategoriaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProdutoServlet</servlet-name>
+        <servlet-class>servlets.ProdutoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ComprasServlet</servlet-name>
+        <servlet-class>servlets.ComprasServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RelatoriosServlet</servlet-name>
+        <servlet-class>servlets.RelatoriosServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginClienteServlet</servlet-name>
@@ -31,6 +47,22 @@
     <servlet-mapping>
         <servlet-name>PerfilServlet</servlet-name>
         <url-pattern>/PerfilServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CategoriaServlet</servlet-name>
+        <url-pattern>/CategoriaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProdutoServlet</servlet-name>
+        <url-pattern>/ProdutoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ComprasServlet</servlet-name>
+        <url-pattern>/ComprasServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatoriosServlet</servlet-name>
+        <url-pattern>/RelatoriosServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

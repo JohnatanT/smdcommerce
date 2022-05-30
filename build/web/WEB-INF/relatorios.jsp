@@ -16,7 +16,7 @@
         <link href="css/home.css" rel="stylesheet">
     </head>
     <body>
-        <jsp:include page="parts/header.jsp"/>
+        <jsp:include page="../parts/header.jsp"/>
         <div class="container">
             <div class="row">
                 <table class="table">

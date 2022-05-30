@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package smdcommerce.usuario.controller;
+package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,20 +12,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import smdcommerce.usuario.modelo.Usuario;
+import utils.ValidaLogin;
 
 /**
  *
  * @author frcavalc
  */
-public class LogoutServlet extends HttpServlet {
+public class PerfilServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        session.invalidate();
-        request.setAttribute("mensagem", "Sua sessão foi encerrada");
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
-        requestDispatcher.forward(request, response);
+        
+        ValidaLogin v = new ValidaLogin();
+        v.validar(request, response, "perfil.jsp");
     }
+    
 }
