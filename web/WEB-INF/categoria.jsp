@@ -77,6 +77,7 @@
                       </tr>
                     </thead>
                     <tbody>
+                    <% if (!categorias.isEmpty()) { %>
                       <% for (int i = 0; i < categorias.size(); i++) { %>
                         <tr>
                             <th scope="row"><%= categorias.get(i).getId()%></th>
@@ -87,6 +88,7 @@
                             </td>
                         </tr>
                       <% } %>
+                    <% } %> 
                     </tbody>
                   </table>
             </div>

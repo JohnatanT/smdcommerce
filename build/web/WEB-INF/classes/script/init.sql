@@ -19,6 +19,7 @@ create table categoria (
 create table produto (
 	produto_id SERIAL PRIMARY KEY,
 	preco FLOAT,
+        descricao VARCHAR,
 	foto_url VARCHAR,
 	quantidade INT
 );

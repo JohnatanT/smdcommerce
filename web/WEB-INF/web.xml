@@ -52,6 +52,14 @@
         <servlet-name>DeletarCategoriaServlet</servlet-name>
         <servlet-class>smdcommerce.categoria.controller.DeletarCategoriaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NovoProdutoServlet</servlet-name>
+        <servlet-class>smdcommerce.produto.controller.NovoProdutoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletaProdutoServlet</servlet-name>
+        <servlet-class>smdcommerce.produto.controller.DeletaProdutoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginClienteServlet</servlet-name>
         <url-pattern>/LoginClienteServlet</url-pattern>
@@ -103,6 +111,14 @@
     <servlet-mapping>
         <servlet-name>DeletarCategoriaServlet</servlet-name>
         <url-pattern>/DeletarCategoriaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NovoProdutoServlet</servlet-name>
+        <url-pattern>/NovoProdutoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletaProdutoServlet</servlet-name>
+        <url-pattern>/DeletaProdutoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

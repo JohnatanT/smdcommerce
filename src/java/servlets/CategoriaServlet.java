@@ -6,6 +6,7 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +28,7 @@ public class CategoriaServlet extends HttpServlet {
         
         ValidaLogin v = new ValidaLogin();
         CategoriaDAO categoria = new CategoriaDAO();
-        List<Categoria> categorias = null;
+        List<Categoria> categorias = new ArrayList<>();
         String mensagem = null;
         try {
             categorias = categoria.obterTodos();
