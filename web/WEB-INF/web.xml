@@ -40,6 +40,18 @@
         <servlet-name>AtualizaUsuarioServlet</servlet-name>
         <servlet-class>smdcommerce.usuario.controller.AtualizaUsuarioServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InserirCategoriaServlet</servlet-name>
+        <servlet-class>smdcommerce.categoria.controller.InserirCategoriaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AtualizaCategoriaServlet</servlet-name>
+        <servlet-class>smdcommerce.categoria.controller.AtualizaCategoriaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletarCategoriaServlet</servlet-name>
+        <servlet-class>smdcommerce.categoria.controller.DeletarCategoriaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginClienteServlet</servlet-name>
         <url-pattern>/LoginClienteServlet</url-pattern>
@@ -79,6 +91,18 @@
     <servlet-mapping>
         <servlet-name>AtualizaUsuarioServlet</servlet-name>
         <url-pattern>/AtualizaUsuarioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InserirCategoriaServlet</servlet-name>
+        <url-pattern>/InserirCategoriaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtualizaCategoriaServlet</servlet-name>
+        <url-pattern>/AtualizaCategoriaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletarCategoriaServlet</servlet-name>
+        <url-pattern>/DeletarCategoriaServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
