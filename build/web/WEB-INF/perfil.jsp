@@ -17,6 +17,17 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <link href="css/home.css" rel="stylesheet">
         <script src="js/perfil.js"></script>
+        <script type="text/javascript">
+            function atualizaUsuario() {
+                document.forms[0].action = "AtualizaUsuarioServlet";
+                document.forms[0].submit();
+            }
+            
+            function deletaUsuario() {
+                document.forms[0].action = "DeletarUsuarioServlet";
+                document.forms[0].submit();
+            }
+        </script>
     </head>
     <body>
         <jsp:include page="../parts/header.jsp"/>
@@ -27,29 +38,30 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="#">
+                    <form method="post">
+                        <input type="hidden" name="id" id="id" value="<%= (usuario != null ? usuario.getId() : "") %>">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Login</label>
-                          <input type="text" class="form-control" value="<%= (usuario != null ? usuario.getLogin() : "") %>" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu login">
+                          <input type="text" class="form-control" value="<%= (usuario != null ? usuario.getLogin() : "") %>" id="login" name="login" aria-describedby="emailHelp" placeholder="Digite seu login">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1">Senha</label>
-                          <input type="password" class="form-control" value="<%= (usuario != null ? usuario.getSenha() : "") %>" id="exampleInputPassword1" placeholder="Senha">
+                          <input type="password" class="form-control" value="<%= (usuario != null ? usuario.getSenha() : "") %>" id="senha" name="senha" placeholder="Senha">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nome</label>
-                          <input type="text" class="form-control" id="nome" value="<%= (usuario != null ? usuario.getNome() : "") %>" aria-describedby="emailHelp" placeholder="Digite seu nome">
+                          <input type="text" class="form-control" id="nome" name="nome" value="<%= (usuario != null ? usuario.getNome() : "") %>" aria-describedby="emailHelp" placeholder="Digite seu nome">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Email</label>
-                          <input type="text" class="form-control" value="<%= (usuario != null ? usuario.getEmail() : "") %>" id="email" aria-describedby="emailHelp" placeholder="Digite seu email">
+                          <input type="text" class="form-control" value="<%= (usuario != null ? usuario.getEmail() : "") %>" id="email" name="email" aria-describedby="emailHelp" placeholder="Digite seu email">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Endereço</label>
-                          <input type="text" class="form-control" value="<%= (usuario != null ? usuario.getEndereco() : "") %>" id="endereco" aria-describedby="emailHelp" placeholder="Digite seu endereço">
+                          <input type="text" class="form-control" value="<%= (usuario != null ? usuario.getEndereco() : "") %>" id="endereco" name="endereco" aria-describedby="emailHelp" placeholder="Digite seu endereço">
                         </div>
-                        <button type="button" class="btn btn-primary" id="btn-login" onclick="atualizar()">Atualizar</button>
-                        <button type="button" class="btn btn-danger">Excluir cadastro</button>
+                        <button type="button" class="btn btn-primary" id="btn-login" onclick="atualizaUsuario();">Atualizar</button>
+                        <button type="button" class="btn btn-danger" onclick="deletaUsuario();">Excluir cadastro</button>
                       </form>
                 </div>
             </div>

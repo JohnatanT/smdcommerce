@@ -24,7 +24,7 @@ public class UsuarioDAO {
     public Usuario obter(int id) throws Exception {
         Usuario usuario = null;
         Class.forName("org.postgresql.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:54320/smdecommerce", "postgres", "ufc123");
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://queenie.db.elephantsql.com:5432/eawaxnxs", "eawaxnxs", "VfKLeEcneJ3a_f0y3PbwDlQC3W67vlSN");
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT usuario_id, nome, endereco, email, login, senha, administrador FROM usuario WHERE id = ?");
         preparedStatement.setInt(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -57,7 +57,7 @@ public class UsuarioDAO {
     public Usuario obter(String login) throws Exception {
         Usuario usuario = null;
         Class.forName("org.postgresql.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:54320/smdecommerce", "postgres", "ufc123");
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://queenie.db.elephantsql.com:5432/eawaxnxs", "eawaxnxs", "VfKLeEcneJ3a_f0y3PbwDlQC3W67vlSN");
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT usuario_id, nome, endereco, email, login, senha, administrador FROM usuario WHERE login = ?");
         preparedStatement.setString(1, login);
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -93,7 +93,7 @@ public class UsuarioDAO {
      */
     public void inserir(String nome, String endereco, String email, String login, String senha, boolean administrador) throws Exception {
         Class.forName("org.postgresql.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:54320/smdecommerce", "postgres", "ufc123");
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://queenie.db.elephantsql.com:5432/eawaxnxs", "eawaxnxs", "VfKLeEcneJ3a_f0y3PbwDlQC3W67vlSN");
         PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO usuario (nome, endereco, email, login, senha, administrador) VALUES (?, ?, ?, ?, ?, ?)");
         preparedStatement.setString(1, nome);
         preparedStatement.setString(2, endereco);
@@ -106,6 +106,37 @@ public class UsuarioDAO {
         connection.close();
         if (resultado != 1) {
             throw new Exception("Não foi possível inserir o usuário");
+        }
+    }
+    
+    public void deletar(Integer id) throws Exception {
+        Class.forName("org.postgresql.Driver");
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://queenie.db.elephantsql.com:5432/eawaxnxs", "eawaxnxs", "VfKLeEcneJ3a_f0y3PbwDlQC3W67vlSN");
+        PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM usuario WHERE usuario_id = ?");
+        preparedStatement.setInt(1, id);
+        int resultado = preparedStatement.executeUpdate();
+        preparedStatement.close();
+        connection.close();
+        if (resultado != 1) {
+            throw new Exception("Não foi possível deletar o usuário");
+        }
+    }
+    
+    public void atualizar(Integer id, String nome, String endereco, String email, String login, String senha) throws Exception {
+        Class.forName("org.postgresql.Driver");
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://queenie.db.elephantsql.com:5432/eawaxnxs", "eawaxnxs", "VfKLeEcneJ3a_f0y3PbwDlQC3W67vlSN");
+        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE usuario SET nome = ?, endereco = ?, email = ?, login = ?, senha = ? WHERE usuario_id = ?");
+        preparedStatement.setString(1, nome);
+        preparedStatement.setString(2, endereco);
+        preparedStatement.setString(3, email);
+        preparedStatement.setString(4, login);
+        preparedStatement.setString(5, senha);
+        preparedStatement.setInt(6, id);
+        int resultado = preparedStatement.executeUpdate();
+        preparedStatement.close();
+        connection.close();
+        if (resultado != 1) {
+            throw new Exception("Não foi atualizar o usuário");
         }
     }
 }

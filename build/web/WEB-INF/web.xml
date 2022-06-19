@@ -32,6 +32,14 @@
         <servlet-name>RelatoriosServlet</servlet-name>
         <servlet-class>servlets.RelatoriosServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeletarUsuarioServlet</servlet-name>
+        <servlet-class>smdcommerce.usuario.controller.DeletarUsuarioServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AtualizaUsuarioServlet</servlet-name>
+        <servlet-class>smdcommerce.usuario.controller.AtualizaUsuarioServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginClienteServlet</servlet-name>
         <url-pattern>/LoginClienteServlet</url-pattern>
@@ -63,6 +71,14 @@
     <servlet-mapping>
         <servlet-name>RelatoriosServlet</servlet-name>
         <url-pattern>/RelatoriosServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletarUsuarioServlet</servlet-name>
+        <url-pattern>/DeletarUsuarioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtualizaUsuarioServlet</servlet-name>
+        <url-pattern>/AtualizaUsuarioServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
