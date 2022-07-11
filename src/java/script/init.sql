@@ -31,3 +31,11 @@ create table produto_categoria (
 	CONSTRAINT fk_produto FOREIGN key (produto_id) REFERENCES produto (produto_id),
 	CONSTRAINT fk_categoria FOREIGN key (categoria_id) REFERENCES categoria (categoria_id)
 );
+
+create table compras (
+ id serial,
+ usuario_id int,
+ produto_id int,
+ quantidade int,
+ data timestamp default now()
+);

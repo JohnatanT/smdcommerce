@@ -20,12 +20,12 @@ import javax.servlet.http.HttpSession;
 public class LogoutServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.invalidate();
         request.setAttribute("mensagem", "Sua sessão foi encerrada");
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("InicioServlet");
         requestDispatcher.forward(request, response);
     }
 }

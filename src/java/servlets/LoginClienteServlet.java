@@ -22,7 +22,7 @@ import smdcommerce.usuario.modelo.UsuarioDAO;
 public class LoginClienteServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         /* entrada */
         String login = request.getParameter("login");
@@ -47,7 +47,7 @@ public class LoginClienteServlet extends HttpServlet {
         }
         /* saída */
         if (sucesso) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("InicioServlet");
             requestDispatcher.forward(request, response);
         } else {
             request.setAttribute("mensagem", mensagem);

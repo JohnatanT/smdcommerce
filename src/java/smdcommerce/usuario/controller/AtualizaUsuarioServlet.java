@@ -47,7 +47,7 @@ public class AtualizaUsuarioServlet extends HttpServlet {
         }
         /* saída */
         request.setAttribute("mensagem", mensagem);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("InicioServlet");
         requestDispatcher.forward(request, response);
     }
 }

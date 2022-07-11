@@ -1,7 +1,7 @@
 <%@page import="smdcommerce.usuario.modelo.Usuario"%>
 
 <div id="nav">
-    <a href="index.jsp" id="logo-url">
+    <a href="InicioServlet" id="logo-url">
         <i class="bi bi-house"></i>
     </a>
     <%
@@ -25,9 +25,6 @@
     <%
         if (usuario != null) {
     %>
-        <a href="carrinho.jsp">
-            <i class="bi bi-cart"></i>
-        </a>
         <a href="ComprasServlet">
             <i class="bi bi-bag"></i>
         </a>

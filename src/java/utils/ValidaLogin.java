@@ -32,7 +32,7 @@ public class ValidaLogin {
             requestDispatcher.forward(request, response);
         } else {
             request.setAttribute("mensagem", "Você precisa estar logado para acessar essa pagina!");
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("InicioServlet");
             requestDispatcher.forward(request, response);
         }
         

@@ -4,6 +4,10 @@
     Author     : frcavalc
 --%>
 
+<%@page import="smdcommerce.usuario.modelo.Usuario"%>
+<%@page import="carrinho.CarrinhoCompraItem"%>
+<%@page import="smdcommerce.produto.modelo.Produto"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,51 +26,88 @@
         <div class="alert alert-warning" role="alert">
             <p><%= request.getAttribute("mensagem") %></p>
         </div>
-        <% } %>  
+        <% } %> 
+        
+        
+        <h3>Carrinho de Compras</h3>
+        <%
+            List<CarrinhoCompraItem> carrinhoCompraItens = (List<CarrinhoCompraItem>) request.getAttribute("carrinhoCompraItens");
+            if (carrinhoCompraItens == null || carrinhoCompraItens.size() == 0) {
+        %>
+        <div>Não existem produtos no seu carrinho compras</div>
+        <%
+        } else {
+            double total = 0;
+            for (int i = 0; i < carrinhoCompraItens.size(); i++) {
+                CarrinhoCompraItem carrinhoCompraItem = carrinhoCompraItens.get(i);
+        %>
+        <div>Descrição: <%= carrinhoCompraItem.getProduto().getDescricao()%></div>
+        <div>Preço: <%= carrinhoCompraItem.getProduto().getPreco()%></div>
+        <div>Quantidade: <%= carrinhoCompraItem.getQuantidade()%></div>
+        <div><a href="RemoverProdutoCarrinhoCompraServlet?produtoId=<%= carrinhoCompraItem.getProduto().getId()%>">Remover do Carrinho de Compras</a></div>
+        <%
+                total += carrinhoCompraItem.getProduto().getPreco() * carrinhoCompraItem.getQuantidade();
+                if (i < carrinhoCompraItens.size() - 1) {
+                    out.println("<br/>");
+                }
+            }
+        %>
+        <br/>
+        <div>Total R$ <%= total%></div>
+        <%
+            }
+        %>
+        
+       
         
         <div class="container">
             <div class="row">
+                <h3>Produtos Disponíveis</h3>
+        <%
+            List<Produto> produtosDisponiveis = (List<Produto>) request.getAttribute("produtosDisponiveis");
+            if (produtosDisponiveis == null || produtosDisponiveis.size() == 0) {
+        %>
+        <div>Não existem produtos disponíveis</div>
+        <%
+        } else {
+            for (int i = 0; i < produtosDisponiveis.size(); i++) {
+                Produto p = produtosDisponiveis.get(i);
+            
+        %>
                 <div class="col-md-4">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="https://warcontent.com/wp-content/uploads/2020/08/livros-javascript-4-1280x720.png" alt="Card image cap">
+                        <div><%= (p.getFotoUrl()== null) ? "Sem Foto" : "<img class='card-img-top' src=\"ExibirProdutoFotoServlet?id=" + p.getId() + "\" />" %></div>
                         <div class="card-body">
-                          <h5 class="card-title">Livro JavaScript</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Comprar</a>
+                          <p class="card-text">Descrição: <%= p.getDescricao()%></p>
+                          <p class="card-text">Preço: <%= p.getPreco()%></p>
+                          <p class="card-text">Quantidade: <%= p.getQuantidade()%></p>
                         </div>
+                        <div><a href="AdicionarProdutoCarrinhoCompraServlet?produtoId=<%= p.getId()%>">Adicionar ao Carrinho de Compras</a></div>
+                            <%
+                                        if (i < produtosDisponiveis.size() - 1) {
+                                            out.println("<br/>");
+                                        }
+                                    }
+                                
+                            %>
+                        <hr/>
+                        
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="https://warcontent.com/wp-content/uploads/2020/08/livros-javascript-4-1280x720.png" alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title">Livro CSS3</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Comprar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="https://warcontent.com/wp-content/uploads/2020/08/livros-javascript-4-1280x720.png" alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title">Livro HTML5</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Comprar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="https://warcontent.com/wp-content/uploads/2020/08/livros-javascript-4-1280x720.png" alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title">Livro Java</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Comprar</a>
-                        </div>
-                    </div>
-                </div>
+              
+                
+                
             </div>
+                        
+                        <%
+        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        if (usuario != null && carrinhoCompraItens.size() > 0) {
+    %>
+    <button><a href="NovaCompraServlet?produtoId=<%= carrinhoCompraItens.get(0).getProduto().getId() %>&quantidade=<%= carrinhoCompraItens.get(0).getQuantidade() %>">Finalizar Compra</a></button>
+    <%
+        }
+        }
+    %>
         </div>
         
         

@@ -4,6 +4,8 @@
     Author     : frcavalc
 --%>
 
+<%@page import="smdcommerce.venda.modelo.Compra"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,30 +26,33 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Produto</th>
+                <th scope="col">Produto ID</th>
                 <th scope="col">Data</th>
-                <th scope="col">Preço</th>
+                <th scope="col">Quantidade</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                 <%
+            List<Compra> produtosDisponiveis = (List<Compra>) request.getAttribute("compras");
+            if (produtosDisponiveis != null || produtosDisponiveis.size() != 0) {
+            
+for (int i = 0; i < produtosDisponiveis.size(); i++) {
+                Compra p = produtosDisponiveis.get(i);
+        %>
+        
+        
+            <tr>
+                <th scope="row"><%= p.getId()%></th>
+                <td><%= p.getProdutoId()%></td>
+                <td><%= p.getData()%></td>
+                <td><%= p.getQuantidade()%></td>
               </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+        <%
+        
+        }
+}
+    %>
+              
             </tbody>
           </table>
     </body>

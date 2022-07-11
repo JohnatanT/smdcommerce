@@ -78,7 +78,7 @@ public class NovoProdutoServlet extends HttpServlet {
             
             /* saída */
             request.setAttribute("mensagem", mensagem);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("Inicio");
             requestDispatcher.forward(request, response);
         }
     }
